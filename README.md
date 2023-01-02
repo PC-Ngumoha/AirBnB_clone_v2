@@ -142,6 +142,7 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 ```
 <br>
 <h3>Advanced Syntax</h3>
+
 ###### Example 1: Creating a new object 
 Usage: create <class_name> [<key>=<value>...]
 ```
