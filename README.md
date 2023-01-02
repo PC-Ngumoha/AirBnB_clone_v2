@@ -141,3 +141,13 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 (hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'name': 'Fred the Frog', 'age': 9, 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
 ```
 <br>
+<h3>Advanced Syntax</h3>
+###### Example 1: Creating a new object 
+Usage: create <class_name> [<key>=<value>...]
+```
+(hbnb) create State name="Nasarawa"
+028f5955-4f58-4023-9088-6feaeb49e339
+(hbnb)
+(hbnb) all State
+(hbnb) ["[State] (028f5955-4f58-4023-9088-6feaeb49e339) {'id': '028f5955-4f58-4023-9088-6feaeb49e339', 'created_at': datetime.datetime(2023, 1, 2, 16, 13, 50, 488223), 'updated_at': datetime.datetime(2023, 1, 2, 16, 13, 50, 488227), 'name': 'Nasarawa'}"]
+```
