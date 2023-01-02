@@ -144,7 +144,7 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 <h3>Advanced Syntax</h3>
 
 ###### Example 1: Creating a new object 
-Usage: create <class_name> [<key>=<value>...]
+Usage: create <class_name> [key=value...]
 ```
 (hbnb) create State name="Nasarawa"
 028f5955-4f58-4023-9088-6feaeb49e339
