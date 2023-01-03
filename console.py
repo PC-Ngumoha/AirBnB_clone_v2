@@ -134,10 +134,8 @@ class HBNBCommand(cmd.Cmd):
                 if value.__contains__('\"') or value.__contains__('\''):
                     value = value.replace('\"', '').replace('\'', '')\
                             .replace('_', ' ')
-                elif value.__contains__("."):
-                    value = float(value)
                 else:
-                    value = int(value)
+                    value = HBNBCommand.types[key](value)
                 args.update({key: value})
         new_instance = HBNBCommand.classes[_cls]()
         new_instance.__dict__.update(args)
