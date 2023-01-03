@@ -120,12 +120,11 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             pline = line[:]
-            _cls = pline[:pline.find(' ')]  # Gets the class name
+            _cls = pline.split(' ')[0]
             if _cls not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            pline = pline[pline.find(' ') + 1:]
-            params = pline.split(' ')
+            params = pline.split(' ')[1:]
             args = {}
             for param in params:
                 param = param.split('=')
