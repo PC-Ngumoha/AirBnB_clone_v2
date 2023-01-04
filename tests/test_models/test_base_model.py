@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ """
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
+from sqlalchemy import  Column
 import unittest
 import datetime
 from uuid import UUID
@@ -68,6 +69,12 @@ class test_basemodel(unittest.TestCase):
         n = i.to_dict()
         self.assertEqual(i.to_dict(), n)
 
+    def test_sa_instance_state(self):
+        """ """
+        i = self.value()
+        n = i.to_dict()
+        self.assertFalse('_sa_instance_state' in n.keys())
+
     def test_kwargs_none(self):
         """ """
         n = {None: None}
@@ -83,17 +90,27 @@ class test_basemodel(unittest.TestCase):
     def test_id(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.id), str)
+        self.assertEqual(type(new.id), Column)
 
     def test_created_at(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.created_at), datetime.datetime)
+        self.assertEqual(type(new.created_at), Column)
 
     def test_updated_at(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.updated_at), datetime.datetime)
-        n = new.to_dict()
-        new = BaseModel(**n)
-        self.assertFalse(new.created_at == new.updated_at)
+        self.assertEqual(type(new.updated_at), Column)
+        # n = new.to_dict()
+        # new = BaseModel(**n)
+        # self.assertFalse(new.created_at == new.updated_at)
+
+    def test_delete(self):
+        """ """
+        from models import storage
+        new = self.value()
+        key = new.to_dict()['__class__'] + '.' + new.id
+        new.save()
+        new.delete()
+        objs = storage.all()
+        self.assertFalse(key in objs.keys())

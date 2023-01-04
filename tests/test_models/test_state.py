@@ -16,4 +16,9 @@ class test_state(test_basemodel):
     def test_name3(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.name), str)
+        self.assertEqual(type(new.name), Column)
+
+    def test_inherits_from_Base_class(self):
+        """ """
+        new = self.value()
+        self.assertIsInstance(new, Base)

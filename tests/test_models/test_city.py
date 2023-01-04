@@ -16,9 +16,14 @@ class test_City(test_basemodel):
     def test_state_id(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.state_id), str)
+        self.assertEqual(type(new.state_id), Column)
 
     def test_name(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.name), str)
+        self.assertEqual(type(new.name), Column)
+
+    def test_inherits_from_Base_class(self):
+        """ """
+        new = self.value()
+        self.assertIsInstance(new, Base)
