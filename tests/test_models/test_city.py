@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """ """
 from tests.test_models.test_base_model import test_basemodel
+from models.base_model import Base
 from models.city import City
+from sqlalchemy import Column
+
 
 
 class test_City(test_basemodel):
@@ -13,17 +16,17 @@ class test_City(test_basemodel):
         self.name = "City"
         self.value = City
 
-    def test_state_id(self):
+    def test_state_id_exists(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.state_id), Column)
+        self.assertTrue(hasattr(new, 'state_id'))
 
-    def test_name(self):
+    def test_name_exists(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.name), Column)
+        self.assertTrue(hasattr(new, 'name'))
 
-    def test_inherits_from_Base_class(self):
+    def test_inherits_from_Base(self):
         """ """
         new = self.value()
         self.assertIsInstance(new, Base)

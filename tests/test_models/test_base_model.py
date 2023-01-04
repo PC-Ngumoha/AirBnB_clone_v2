@@ -90,20 +90,20 @@ class test_basemodel(unittest.TestCase):
     def test_id(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.id), Column)
+        self.assertEqual(type(new.id), str)
 
     def test_created_at(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.created_at), Column)
+        self.assertEqual(type(new.created_at), datetime.datetime)
 
     def test_updated_at(self):
         """ """
         new = self.value()
-        self.assertEqual(type(new.updated_at), Column)
-        # n = new.to_dict()
-        # new = BaseModel(**n)
-        # self.assertFalse(new.created_at == new.updated_at)
+        self.assertEqual(type(new.updated_at), datetime.datetime)
+        n = new.to_dict()
+        new = BaseModel(**n)
+        self.assertFalse(new.created_at == new.updated_at)
 
     def test_delete(self):
         """ """
