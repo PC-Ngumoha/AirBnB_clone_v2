@@ -6,6 +6,10 @@ from models import storage
 import os
 
 
+store_type = os.getenv('HBNB_TYPE_STORAGE')
+
+
+@unittest.skipUnless(store_type != 'db', 'Test suite intended for File Storage alone')
 class test_fileStorage(unittest.TestCase):
     """ Class to test the file storage method """
 
