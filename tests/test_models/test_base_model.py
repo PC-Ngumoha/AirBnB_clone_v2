@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ """
 from models.base_model import BaseModel, Base
-from sqlalchemy import  Column
+from sqlalchemy import Column
 import unittest
 import datetime
 from uuid import UUID
@@ -28,10 +28,10 @@ class test_basemodel(unittest.TestCase):
     def tearDown(self):
         try:
             os.remove('file.json')
-        except:
+        except Exception:
             pass
 
-    @unittest.skipUnless(store_type != 'db', 'Test is specific to the FileStorage engine')
+    @unittest.skipUnless(store_type != 'db', 'Test intended for FileStorage')
     def test_default(self):
         """ """
         i = self.value()
@@ -52,7 +52,7 @@ class test_basemodel(unittest.TestCase):
         with self.assertRaises(TypeError):
             new = BaseModel(**copy)
 
-    @unittest.skipUnless(store_type != 'db', 'Test is specific to the FileStorage engine')
+    @unittest.skipUnless(store_type != 'db', 'Test for FileStorage')
     def test_save(self):
         """ Testing save """
         i = self.value()

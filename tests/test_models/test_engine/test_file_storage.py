@@ -9,7 +9,7 @@ import os
 store_type = os.getenv('HBNB_TYPE_STORAGE')
 
 
-@unittest.skipUnless(store_type != 'db', 'Test suite intended for File Storage alone')
+@unittest.skipUnless(store_type != 'db', 'Test for FileStorage')
 class test_fileStorage(unittest.TestCase):
     """ Class to test the file storage method """
 
@@ -25,7 +25,7 @@ class test_fileStorage(unittest.TestCase):
         """ Remove storage file at end of tests """
         try:
             os.remove('file.json')
-        except:
+        except Exception:
             pass
 
     def test_obj_list_empty(self):

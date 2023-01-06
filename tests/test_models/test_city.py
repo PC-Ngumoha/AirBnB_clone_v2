@@ -7,7 +7,6 @@ from models.state import State
 from sqlalchemy import Column
 
 
-
 class test_City(test_basemodel):
     """ """
 

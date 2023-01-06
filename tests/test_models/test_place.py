@@ -23,8 +23,8 @@ class test_Place(test_basemodel):
 
     def test_name(self):
         """ """
-        self.assertTrue(hasattr(self.value, 'name')) 
-        
+        self.assertTrue(hasattr(self.value, 'name'))
+
     def test_description(self):
         """ """
         self.assertTrue(hasattr(self.value, 'description'))

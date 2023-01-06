@@ -31,8 +31,7 @@ class DBStorage:
         from models.user import User
 
         classes = {'Amenity': Amenity, 'City': City, 'Place': Place,
-                    'Review': Review, 'State': State, 'User': User
-                  }
+                   'Review': Review, 'State': State, 'User': User}
         output = {}
         if cls:
             if type(cls) is str:
@@ -62,7 +61,6 @@ class DBStorage:
         if obj:
             self.__session.delete(obj)
 
-
     def reload(self):
         """Creates all the tables in the database and creates a new DB session
         """
@@ -79,4 +77,3 @@ class DBStorage:
                                        expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
-    

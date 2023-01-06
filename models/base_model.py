@@ -43,7 +43,7 @@ class BaseModel:
                 value = datetime.fromisoformat(value)
             if key != '__class__':
                 dictionary[key] = value
-    
+
         cls = (str(type(self)).split('.')[-1]).split('\'')[0]
         return '[{}] ({}) {}'.format(cls, self.id, dictionary)
 

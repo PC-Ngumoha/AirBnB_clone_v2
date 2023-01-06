@@ -7,7 +7,7 @@ from models.state import State
 store_type = os.getenv('HBNB_TYPE_STORAGE')
 
 
-@unittest.skipIf(store_type != 'db', 'Test suite intended for DB storage alone')
+@unittest.skipIf(store_type != 'db', 'Test for DBStorage')
 class test_dbstorage(unittest.TestCase):
     """Class to test the DB storage method"""
 
