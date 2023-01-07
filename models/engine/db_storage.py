@@ -34,8 +34,6 @@ class DBStorage:
                    'Review': Review, 'State': State, 'User': User}
         output = {}
         if cls:
-            if type(cls) is str:
-                cls = classes[cls]
             objs = self.__session.query(cls).all()
             for obj in objs:
                 key = obj.to_dict()['__class__'] + '.' + obj.id

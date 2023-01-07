@@ -10,14 +10,25 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
-        if cls is None:
-            return self.__objects
-        else:
-            filtered_dict = {}
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.place import Place
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.review import Review
+
+        output = {}
+        if cls:
+            cls = str(cls).split('.')[2].replace('"', '').strip("'>")
             for key, value in self.__objects.items():
-                if type(value) is cls:
-                    filtered_dict[key] = value
-            return filtered_dict
+                _cls = key.partition('.')[0]
+                if _cls == cls:
+                    output.update({key: value})
+        else:
+            output = self.__objects
+        return output
+
 
     def delete(self, obj=None):
         """Removes an object from the storage dictionary"""
@@ -28,13 +39,15 @@ class FileStorage:
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
+        print("Inside FileStorage new() method")
         self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
 
     def save(self):
         """Saves storage dictionary to file"""
-        with open(FileStorage.__file_path, 'w') as f:
+        print("inside FileStorage save() method")
+        with open(self.__file_path, 'w') as f:
             temp = {}
-            temp.update(FileStorage.__objects)
+            temp.update(self.__objects)
             for key, val in temp.items():
                 temp[key] = val.to_dict()
             json.dump(temp, f)

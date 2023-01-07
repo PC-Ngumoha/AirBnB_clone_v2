@@ -137,10 +137,8 @@ class HBNBCommand(cmd.Cmd):
                     value = HBNBCommand.types[key](value)
                 args.update({key: value})
         new_instance = HBNBCommand.classes[_cls](**args)
-        # new_instance.__dict__.update(args)
-        # storage.save()
-        print(new_instance.id)
         new_instance.save()
+        print(new_instance.id)
 
     def help_create(self):
         """ Help information for the create method """
@@ -170,7 +168,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         # key = c_name + "." + c_id
-        for key, value in storage.all(c_name).items():
+        for key, value in storage.all(HBNBCommand.classes[c_name]).items():
             if c_id == value.id:
                 print(value)
                 return  
@@ -223,9 +221,10 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage.all(cls=args).items():
+            for k, v in storage.all(HBNBCommand.classes[args]).items():
                 print_list.append(str(v))
         else:
+            # print(storage.all().items()) 
             for k, v in storage.all().items():
                 print_list.append(str(v))
 
