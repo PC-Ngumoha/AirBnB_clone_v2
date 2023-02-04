@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Displays 'Hello HBNB!' on the web page using Flask"""
 from flask import Flask
 
