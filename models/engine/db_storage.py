@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Module defines DBStorage which is used by HBNB clone to interact with DB"""
 import os
 from sqlalchemy import create_engine
