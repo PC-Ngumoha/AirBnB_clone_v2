@@ -171,7 +171,7 @@ class HBNBCommand(cmd.Cmd):
         for key, value in storage.all(HBNBCommand.classes[c_name]).items():
             if c_id == value.id:
                 print(value)
-                return  
+                return
         print("** no instance found **")
 
     def help_show(self):
@@ -224,7 +224,7 @@ class HBNBCommand(cmd.Cmd):
             for k, v in storage.all(HBNBCommand.classes[args]).items():
                 print_list.append(str(v))
         else:
-            # print(storage.all().items()) 
+            # print(storage.all().items())
             for k, v in storage.all().items():
                 print_list.append(str(v))
 
